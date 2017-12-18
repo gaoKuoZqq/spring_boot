@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sb.entity.User;
 import com.sb.service.IUserService;
@@ -34,5 +35,15 @@ public class UserController {
     public User query() {
     	//return "45644";
 		return userService.query();
+	}
+    
+    @RequestMapping(value = "/testThymeleaf")
+    public ModelAndView testThymeleaf() {
+		User user = new User();
+		user.setId(23);
+		user.setName("小明");
+		ModelAndView modelAndView = new ModelAndView("user/index2");
+		modelAndView.addObject("user",user);
+		return modelAndView;
 	}
 }
