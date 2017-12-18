@@ -3,6 +3,7 @@ package com.sb.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sb.dao.UserMapper;
 import com.sb.entity.User;
 import com.sb.repositoty.UserRepositoty;
 import com.sb.service.IUserService;
@@ -10,6 +11,8 @@ import com.sb.service.IUserService;
 public class UserServiceImpl implements IUserService{
 	@Autowired
 	private UserRepositoty userRepositoty;
+	@Autowired
+	private UserMapper userMapper;
 	
     public User findUserByName(String name){
         User user = null;
@@ -18,4 +21,9 @@ public class UserServiceImpl implements IUserService{
         }catch (Exception e){}
         return user;
     }
+
+	@Override
+	public User query() {
+		return userMapper.query();
+	}
 }

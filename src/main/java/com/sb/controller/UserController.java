@@ -28,4 +28,11 @@ public class UserController {
             return user.getId()+"/"+user.getName()+"/"+user.getPassword();
         else return "null";
     }
+    
+    @RequestMapping(value = "/query")
+    @ResponseBody
+    public User query() {
+    	//return "45644";
+		return userService.query();
+	}
 }
