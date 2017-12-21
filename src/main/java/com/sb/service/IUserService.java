@@ -8,4 +8,6 @@ public interface IUserService {
 	
 	public User query();
 
+	public User queryBy(Integer id, String name);
+
 }

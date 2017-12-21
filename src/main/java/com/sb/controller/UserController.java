@@ -45,5 +45,11 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView("user/index2");
 		modelAndView.addObject("user",user);
 		return modelAndView;
+    }
+		
+    @RequestMapping(value = "/queryBy")
+    @ResponseBody
+    public User query(Integer id,String name) {
+		return userService.queryBy(id,name);
 	}
 }

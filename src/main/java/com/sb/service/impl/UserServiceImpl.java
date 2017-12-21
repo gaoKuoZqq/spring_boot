@@ -26,4 +26,9 @@ public class UserServiceImpl implements IUserService{
 	public User query() {
 		return userMapper.query();
 	}
+
+	@Override
+	public User queryBy(Integer id, String name) {
+		return userMapper.queryBy(id,name);
+	}
 }
