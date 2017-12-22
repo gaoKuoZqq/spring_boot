@@ -54,8 +54,27 @@ public class UserController {
 		return userService.queryBy(id,name);
 	}
     
-    @Scheduled(cron="0/5 * *  * * ? ")   //每5秒执行一次 
+/*    @Scheduled(cron="0/5 * *  * * ? ")   //每5秒执行一次 
     private void time() {
     	System.out.println(query());
+    	//定时任务,已经测试
+    }*/
+    
+    //下面的两个方法测试多线程定时任务
+    @Scheduled(cron="0/1 * *  * * ? ")   //每1秒执行一次 
+    private void timeMany() throws InterruptedException {
+    	for (int i = 0;i < 100;i = i + 2) {
+    		Thread.sleep(90);
+			System.out.println(i);
+		}
     }
+    
+    @Scheduled(cron="0/1 * *  * * ? ")   //每1秒执行一次 
+    private void timeMany2() throws InterruptedException {
+    	for (int i = 1;i < 100;i = i + 2) {
+    		Thread.sleep(100);
+			System.out.println(i);
+		}
+    }
+    
 }
