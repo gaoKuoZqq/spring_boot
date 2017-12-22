@@ -1,6 +1,7 @@
 package com.sb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,4 +53,9 @@ public class UserController {
     public User query(Integer id,String name) {
 		return userService.queryBy(id,name);
 	}
+    
+    @Scheduled(cron="0/5 * *  * * ? ")   //每5秒执行一次 
+    private void time() {
+    	System.out.println(query());
+    }
 }
